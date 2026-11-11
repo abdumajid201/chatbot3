@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: abdulboriy-telegram-bot
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node src/index.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: TELEGRAM_WEBHOOK_SECRET_SEED
+        generateValue: true
